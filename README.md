@@ -1,7 +1,7 @@
 # TS-GRAPHQL-TYPEORM
 
 This repo is from a live coding session.
-Al link to the session will later be added.
+A link to the session will be added later.
 
 ## Development
 
