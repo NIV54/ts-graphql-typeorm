@@ -1,13 +1,16 @@
 import "reflect-metadata";
 
-import express from "express";
+import express, { Response } from "express";
 import config from "config";
 import Container from "typedi";
 import ServerInitializer from "./initializers/server.initializer";
 
-const app = express();
-Container.set("app", app);
 const port = parseInt(config.get("port"));
+
+const app = express();
+app.get("/", (_, res: Response) => res.redirect("/graphql"));
+
+Container.set("app", app);
 
 const start = async () => {
   await Container.get(ServerInitializer).init();

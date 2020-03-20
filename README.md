@@ -13,4 +13,4 @@ A link to the session will be added later.
 - npm i
 - npm run prod
 
-Open your browser under [localhost:3001/graphql](http://localhost:3001/graphql) and start hacking!
+Open your browser under [localhost:3001](http://localhost:3001/) and start hacking!
