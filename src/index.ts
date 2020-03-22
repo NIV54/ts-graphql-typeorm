@@ -1,9 +1,13 @@
 import "reflect-metadata";
-
 import express, { Response } from "express";
 import config from "config";
 import Container from "typedi";
-import ServerInitializer from "./initializers/server.initializer";
+import { useContainer } from "typeorm";
+
+import * as initializers from "./initializers";
+import { Initializer } from "./initializers/initializer.type";
+
+useContainer(Container);
 
 const port = parseInt(config.get("port"));
 
@@ -13,8 +17,11 @@ app.get("/", (_, res: Response) => res.redirect("/graphql"));
 Container.set("app", app);
 
 const start = async () => {
-  await Container.get(ServerInitializer).init();
-  console.log("Server is running");
+  await Promise.all(
+    Object.values(initializers).map(initializer =>
+      Container.get<Initializer>(initializer).init()
+    )
+  );
   app.listen(port, () => {
     console.log("App is running");
   });

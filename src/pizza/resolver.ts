@@ -4,38 +4,26 @@ import {
   Mutation,
   Arg,
   FieldResolver,
-  Root,
-  Int
+  Root
 } from "type-graphql";
+import { InjectRepository } from "typeorm-typedi-extensions";
 import { Pizza } from "./model";
 import { PizzaInput } from "./input/add.input";
-
-const pizzas: Pizza[] = [
-  {
-    size: 1,
-    topping: "tomato"
-  },
-  {
-    size: 2,
-    topping: "olives"
-  },
-  {
-    size: 3,
-    topping: "corn"
-  }
-];
+import { Repository } from "typeorm";
 
 @Resolver(of => Pizza)
 export class PizzaResolver {
+  @InjectRepository(Pizza)
+  pizzaRepository: Repository<Pizza>;
+
   @Query(returns => [Pizza])
-  pizzas(): Pizza[] {
-    return pizzas;
+  pizzas(): Promise<Pizza[]> {
+    return this.pizzaRepository.find();
   }
 
   @Mutation(returns => Pizza)
-  addPizza(@Arg("pizzaInput") pizzaInput: PizzaInput): Pizza {
-    pizzas.push(pizzaInput);
-    return pizzaInput;
+  addPizza(@Arg("pizzaInput") pizzaInput: PizzaInput): Promise<Pizza> {
+    return this.pizzaRepository.save(pizzaInput);
   }
 
   @FieldResolver()

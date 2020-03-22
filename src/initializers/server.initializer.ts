@@ -20,5 +20,7 @@ export default class ServerInitializer {
     });
 
     server.applyMiddleware({ app: this.app });
+
+    console.log("Server is running");
   };
 }
