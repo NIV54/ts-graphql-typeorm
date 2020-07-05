@@ -7,7 +7,7 @@
     "start": "ts-node src/index.ts",
     "dev": "nodemon",
     "build": "tsc",
-    "prod": "npm run build && cross-env NODE_ENV=production node build/index.js"
+    "prod": "cross-env NODE_ENV=production node build/index.js"
   },
   "keywords": [],
   "author": "",
