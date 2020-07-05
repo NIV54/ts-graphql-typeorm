@@ -1,0 +1,12 @@
+{
+  "port": 8080,
+  "db": {
+    "driver": "mysql",
+    "type": "mysql",
+    "host": "sql7.freesqldatabase.com",
+    "port": 3306,
+    "entities": [
+      "build/**/model.js"
+    ]
+  }
+}

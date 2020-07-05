@@ -5,12 +5,11 @@
     "type": "mssql",
     "host": "localhost",
     "port": 1434,
+    "database": "db6",
     "username": "Niv54",
     "password": "myCoolDbPassword123",
-    "database": "db6",
-    "synchronize": true,
-    "logging": true,
-    "logger": "advanced-console",
-    "entities": ["src/**/model.ts"]
+    "entities": [
+      "src/**/model.ts"
+    ]
   }
 }
