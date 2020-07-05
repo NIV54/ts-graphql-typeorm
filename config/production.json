@@ -4,9 +4,9 @@
     "driver": "mysql",
     "type": "mysql",
     "host": "sql7.freesqldatabase.com",
+    "database": "sql7352838",
+    "username": "sql7352838",
     "port": 3306,
-    "entities": [
-      "build/**/model.js"
-    ]
+    "entities": ["build/**/model.js"]
   }
 }
