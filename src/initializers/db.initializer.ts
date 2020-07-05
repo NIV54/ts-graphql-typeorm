@@ -1,5 +1,5 @@
 import { Service } from "typedi";
-import { Connection, createConnection, ConnectionOptions } from "typeorm";
+import { createConnection, ConnectionOptions } from "typeorm";
 import config from "config";
 
 import { Initializer } from "./initializer.type";
