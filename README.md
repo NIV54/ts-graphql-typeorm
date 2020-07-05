@@ -27,3 +27,12 @@ Open your browser under [localhost:3001](http://localhost:3001/) and start hacki
 - npm run prod
 
 [localhost:8080](http://localhost:8080/)
+
+## Live coding
+
+If requested, I'll upload the session and put a link here.<br>
+The branches are ordered as in the session:
+
+- part-1: apollo-server only
+- part-2: adding typeorm
+- part-3: final touches and prod db (was not a part of the session)
