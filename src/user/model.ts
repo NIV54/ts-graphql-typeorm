@@ -1,4 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
+import { TypeormLoader } from "type-graphql-dataloader";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 import { Pizza } from "../pizza/model";
@@ -20,5 +21,6 @@ export class User {
 
   @Field(type => [Pizza])
   @OneToMany(type => Pizza, pizza => pizza.user, { lazy: true })
+  @TypeormLoader()
   pizzas: Pizza[];
 }
