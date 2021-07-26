@@ -1,5 +1,7 @@
-import { ObjectType, Field, ID } from "type-graphql";
-import { PrimaryGeneratedColumn, Column, Entity } from "typeorm";
+import { Field, ObjectType } from "type-graphql";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+import { User } from "../user/model";
 
 @Entity({ name: "Pizzas" })
 @ObjectType({ description: "Pizza with toppings" })
@@ -18,4 +20,7 @@ export class Pizza {
 
   @Field()
   ovenTime?: number;
+
+  @ManyToOne(type => User, user => user.pizzas, { lazy: true })
+  user: User;
 }

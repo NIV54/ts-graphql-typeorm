@@ -1,8 +1,10 @@
-import { buildSchema } from "type-graphql";
-import Container, { Inject } from "typedi";
 import { ApolloServer } from "apollo-server-express";
 import { Application } from "express";
+import { buildSchema } from "type-graphql";
+import Container, { Inject } from "typedi";
+
 import { PizzaResolver } from "../pizza/resolver";
+import { UserResolver } from "../user/resolver";
 
 export default class ServerInitializer {
   @Inject("app")
@@ -10,7 +12,7 @@ export default class ServerInitializer {
 
   init = async () => {
     const schema = await buildSchema({
-      resolvers: [PizzaResolver],
+      resolvers: [PizzaResolver, UserResolver],
       container: Container
     });
 

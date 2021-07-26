@@ -1,15 +1,11 @@
-import {
-  Resolver,
-  Query,
-  Mutation,
-  Arg,
-  FieldResolver,
-  Root
-} from "type-graphql";
-import { InjectRepository } from "typeorm-typedi-extensions";
-import { Pizza } from "./model";
-import { PizzaInput } from "./input/add.input";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { Repository } from "typeorm";
+import { InjectRepository } from "typeorm-typedi-extensions";
+
+import { User } from "../user/model";
+
+import { PizzaInput } from "./input/add.input";
+import { Pizza } from "./model";
 
 @Resolver(of => Pizza)
 export class PizzaResolver {
@@ -23,7 +19,14 @@ export class PizzaResolver {
 
   @Mutation(returns => Pizza)
   addPizza(@Arg("pizzaInput") pizzaInput: PizzaInput): Promise<Pizza> {
-    return this.pizzaRepository.save(pizzaInput);
+    const { userId, ...input } = pizzaInput;
+    const user = new User();
+    user.id = userId;
+    const pizza = this.pizzaRepository.create({
+      ...input,
+      user
+    });
+    return this.pizzaRepository.save(pizza);
   }
 
   @FieldResolver()
