@@ -1,7 +1,8 @@
 # TS-GRAPHQL-TYPEORM
 
-This repo is from a live coding session.
-A link to the session will be added later.
+A full functioning `graphql` API with an `orm`, written with Typescript decorators.  
+This is my favorite stack when creating a new API due to it's ease of use is high readablity.  
+This repo is from a live coding session. A link to the session will be added later.
 
 ## Running the code
 
